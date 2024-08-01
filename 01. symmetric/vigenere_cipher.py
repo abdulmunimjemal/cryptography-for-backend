@@ -68,5 +68,12 @@ def run_tests():
         assert encrypted == expected_cipher, f"Encryption failed for {plain_text} with key {key}"
         assert decrypted == plain_text.upper(), f"Decryption failed for {encrypted} with key {key}"
         print("Test passed.\n")
+    
+    from random import randint
+    print("Non-Deterministic Test")
+    random_string = ''.join([alphabet[randint(0, 25)] for _ in range(50)])
+    encrypted = vigenere_encrypt(random_string, "PASSWORD")
+    assert random_string == vigenere_decrypt(encrypted, "PASSWORD")
+    print("Non-Determinsitic Test PASSED!")
 
 run_tests()
