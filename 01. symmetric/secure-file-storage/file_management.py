@@ -11,7 +11,7 @@ class FileManagementModule:
             f.write(data)
         
     def read_file(self, file_name):
-        with open(os.path.join(self.storage_dir, file_name), 'wb') as f:
+        with open(os.path.join(self.storage_dir, file_name), 'rb') as f:
             return f.read()
     
     def list_files(self):

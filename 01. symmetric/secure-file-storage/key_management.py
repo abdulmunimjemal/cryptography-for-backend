@@ -25,6 +25,12 @@ class KeyManagementModule:
     def decrypt_key(self, key):
         return self.encryption_context.decrypt(self.master_key, key)
 
+    def encrypt_filename(self, filename):
+        return self.encryption_context.encrypt(self.master_key, filename.encode()).hex()
+
+    def decrypt_filename(self, encrypted_filename):
+        return self.encryption_context.decrypt(self.master_key, bytes.fromhex(encrypted_filename)).decode()
+    
 if __name__ == "__main__":
     import os
     key_manager = KeyManagementModule("master_password")
